@@ -1,10 +1,155 @@
 import unittest
 from unittest.mock import patch
 
-from compute_stats_refactor import harmonic_mean, variance, standard_dev
+from compute_stats_refactor import count, summation, maximum, minimum, average, harmonic_mean, variance, standard_dev
 
 
 class TestComputeStatsRefactor(unittest.TestCase):
+
+    @patch('compute_stats_refactor.read_ints')
+    def test_count_of_ordinary_file_with_multiple_elements(self, read_ints_mock):
+        """
+        :param read_ints_mock: mocking the data reading function to test diverse inputs
+        :return:
+        """
+        read_ints_mock.return_value = [1, 4, 4]
+        self.assertEqual(count(), 3)
+        
+    @patch('compute_stats_refactor.read_ints')
+    def test_count_of_a_file_with_a_single_element(self, read_ints_mock):
+        """
+        Introductory example of https://en.wikipedia.org/wiki/Harmonic_mean
+        :param read_ints_mock: mocking the data reading function to test diverse inputs
+        :return:
+        """
+        read_ints_mock.return_value = [1]
+        self.assertEqual(count(), 1)
+
+    @patch('compute_stats_refactor.read_ints')
+    def test_count_of_a_file_without_element(self, read_ints_mock):
+        """
+        Introductory example of https://en.wikipedia.org/wiki/Harmonic_mean
+        :param read_ints_mock: mocking the data reading function to test diverse inputs
+        :return:
+        """
+        read_ints_mock.return_value = []
+        self.assertEqual(count(), 0)
+
+    @patch('compute_stats_refactor.read_ints')
+    def test_summation_of_ordinary_file_with_multiple_elements(self, read_ints_mock):
+        """
+        :param read_ints_mock: mocking the data reading function to test diverse inputs
+        :return:
+        """
+        read_ints_mock.return_value = [1, 4, 4]
+        self.assertEqual(summation(), 9)
+        
+    @patch('compute_stats_refactor.read_ints')
+    def test_summation_of_a_file_with_a_single_element(self, read_ints_mock):
+        """
+        Introductory example of https://en.wikipedia.org/wiki/Harmonic_mean
+        :param read_ints_mock: mocking the data reading function to test diverse inputs
+        :return:
+        """
+        read_ints_mock.return_value = [1]
+        self.assertEqual(summation(), 1)
+
+    @patch('compute_stats_refactor.read_ints')
+    def test_summation_of_a_file_without_element(self, read_ints_mock):
+        """
+        Introductory example of https://en.wikipedia.org/wiki/Harmonic_mean
+        :param read_ints_mock: mocking the data reading function to test diverse inputs
+        :return:
+        """
+        read_ints_mock.return_value = []
+        self.assertEqual(summation(), 0)
+        
+    @patch('compute_stats_refactor.read_ints')
+    def test_average_of_ordinary_file_with_multiple_elements(self, read_ints_mock):
+        """
+        :param read_ints_mock: mocking the data reading function to test diverse inputs
+        :return:
+        """
+        read_ints_mock.return_value = [1, 4, 4]
+        self.assertEqual(average(), 3)
+        
+    @patch('compute_stats_refactor.read_ints')
+    def test_average_of_a_file_with_a_single_element(self, read_ints_mock):
+        """
+        Introductory example of https://en.wikipedia.org/wiki/Harmonic_mean
+        :param read_ints_mock: mocking the data reading function to test diverse inputs
+        :return:
+        """
+        read_ints_mock.return_value = [1]
+        self.assertEqual(average(), 1)
+
+    # @patch('compute_stats_refactor.read_ints')
+    # def test_average_of_a_file_without_element(self, read_ints_mock):
+        # """
+        # Introductory example of https://en.wikipedia.org/wiki/Harmonic_mean
+        # :param read_ints_mock: mocking the data reading function to test diverse inputs
+        # :return:
+        # """
+        # read_ints_mock.return_value = []
+        # self.assertEqual(average(), 0)
+     
+    @patch('compute_stats_refactor.read_ints')
+    def test_maximum_of_ordinary_file_with_multiple_elements(self, read_ints_mock):
+        """
+        :param read_ints_mock: mocking the data reading function to test diverse inputs
+        :return:
+        """
+        read_ints_mock.return_value = [1, 4, 4, 0, 5]
+        self.assertEqual(maximum(), 5)
+        
+    @patch('compute_stats_refactor.read_ints')
+    def test_maximum_of_a_file_with_a_single_element(self, read_ints_mock):
+        """
+        Introductory example of https://en.wikipedia.org/wiki/Harmonic_mean
+        :param read_ints_mock: mocking the data reading function to test diverse inputs
+        :return:
+        """
+        read_ints_mock.return_value = [1]
+        self.assertEqual(maximum(), 1)
+
+    @patch('compute_stats_refactor.read_ints')
+    def test_maximum_of_a_file_without_element(self, read_ints_mock):
+        """
+        Introductory example of https://en.wikipedia.org/wiki/Harmonic_mean
+        :param read_ints_mock: mocking the data reading function to test diverse inputs
+        :return:
+        """
+        read_ints_mock.return_value = []
+        self.assertEqual(maximum(), None)
+
+    @patch('compute_stats_refactor.read_ints')
+    def test_minimum_of_ordinary_file_with_multiple_elements(self, read_ints_mock):
+        """
+        :param read_ints_mock: mocking the data reading function to test diverse inputs
+        :return:
+        """
+        read_ints_mock.return_value = [1, 4, 4, 0, 5]
+        self.assertEqual(minimum(), 0)
+        
+    @patch('compute_stats_refactor.read_ints')
+    def test_minimum_of_a_file_with_a_single_element(self, read_ints_mock):
+        """
+        Introductory example of https://en.wikipedia.org/wiki/Harmonic_mean
+        :param read_ints_mock: mocking the data reading function to test diverse inputs
+        :return:
+        """
+        read_ints_mock.return_value = [1]
+        self.assertEqual(minimum(), 1)
+
+    @patch('compute_stats_refactor.read_ints')
+    def test_minimum_of_a_file_without_element(self, read_ints_mock):
+        """
+        Introductory example of https://en.wikipedia.org/wiki/Harmonic_mean
+        :param read_ints_mock: mocking the data reading function to test diverse inputs
+        :return:
+        """
+        read_ints_mock.return_value = []
+        self.assertEqual(minimum(), None)
 
     @patch('compute_stats_refactor.read_ints')
     def test_harmonic_mean_of_1_4_4(self, read_ints_mock):
